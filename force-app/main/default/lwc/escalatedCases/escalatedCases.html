@@ -1,0 +1,14 @@
+<template>
+    <lightning-card title="Escalated Cases" icon-name="custom:custom14">
+        <ul class="slds-m-around_medium">
+            <template for:each={cases.data} for:item="currentItem">
+                <li key={currentItem.case_id__c}>
+                    <br>
+                </li>
+                <li key={currentItem.case_id__c}>
+                    <b>{currentItem.CaseNumber}</b>:  {currentItem.Status} - {currentItem.Subject} -	{currentItem.Case_Id__c} - {currentItem.id} 
+                </li>
+            </template>
+        </ul>
+    </lightning-card>
+</template>
