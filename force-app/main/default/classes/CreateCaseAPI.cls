@@ -4,7 +4,7 @@ global with sharing class CreateCaseAPI {
     @HTTPPost
     global static string doPost() {
 
-        string contactId, orgId, status, type, subject, description;
+        string contactId, orgId, status, type, subject, description, origin;
 
         RestRequest req = RestContext.request;
         RestResponse res = RestContext.response;
@@ -36,6 +36,9 @@ global with sharing class CreateCaseAPI {
                 if (fieldName == 'Description') {
                     description = fieldValue;
                 }
+                if (fieldName == 'Origin') {
+                    origin = fieldValue;
+                }
             }
         }
 
@@ -44,7 +47,8 @@ global with sharing class CreateCaseAPI {
                                 status=status,
                                 type=type,
                                 subject=subject,
-                                description=description);
+                                description=description,
+                                origin=origin);
         
         insert recCase;
 
