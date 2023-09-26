@@ -3,7 +3,7 @@ public with sharing class GetCasesClass {
     public static List<Case> fromStatus(string status) {
         try {
             return [
-                SELECT id, CaseNumber, Case_Id__c, Subject, Status, description
+                SELECT Id, CaseNumber, Case_Id__c, Subject, Status, description
                 FROM Case
                 WHERE Status =: status
             ];
