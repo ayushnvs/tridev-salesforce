@@ -6,9 +6,13 @@
                     <br>
                 </li>
                 <li key={currentItem.case_id__c}>
-                    <b>{currentItem.CaseNumber}</b>:  {currentItem.Status} - {currentItem.Subject} -	{currentItem.Case_Id__c} - {currentItem.id} 
+                    <p style="display:none;">https://tridevinc-dev-ed.develop.lightning.force.com/lightning/r/Case/{currentItem.Id}/view</p>
+                    <a href="https://tridevinc-dev-ed.develop.lightning.force.com/lightning/r/Case/{currentItem.Id}/view" >{currentItem.CaseNumber}</a>:  {currentItem.Status} - {currentItem.Subject} -	{currentItem.Case_Id__c} - 
                 </li>
+                
             </template>
         </ul>
+        <br>
+        {finalCase}
     </lightning-card>
 </template>
