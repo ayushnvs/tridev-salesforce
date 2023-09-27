@@ -15,7 +15,7 @@ export default class CustomCaseUI extends LightningElement {
     // renderedCallback() {
 
     //     Promise.all([
-    //         loadStyle(this, bootstrap + '/bootstrap-5.3.2-dist/css/bootstrap.css'),
+    //         loadStyle(this, bootstrap + '/bootstrap-5.3.2-dist/css/bootstrap.min.css'),
     //         loadScript(this, bootstrap + '/bootstrap-5.3.2-dist/js/bootstrap.js'),
     //         // loadScript(this, popper),
     //         // loadScript(this, jquery)     
