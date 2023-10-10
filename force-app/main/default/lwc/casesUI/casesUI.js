@@ -1,7 +1,11 @@
 import { LightningElement, api, wire } from 'lwc';
 import { getObjectInfo, getPicklistValuesByRecordType, createRecord } from 'lightning/uiObjectInfoApi';
+import CASE_OBJECT from "@salesforce/schema/Case";
 
 export default class CasesUI extends LightningElement {
+
+    retrievedData;
+
     subject;
     description;
     statusValue;
@@ -12,16 +16,16 @@ export default class CasesUI extends LightningElement {
     pickValOrigin;
     pickValPriority;
 
-    @api recordId;
-    @api objectApiName; 
+    // @api recordId;
+    // @api objectApiName; 
     
-    objectName; 
+    // objectName; 
 
-    // @wire(getObjectInfo, { objectApiName: CASE_OBJECT })
-    //     accountMetadata;
+    @wire(getObjectInfo, { objectApiName: CASE_OBJECT })
+        accountMetadata;
 
     @wire(getPicklistValuesByRecordType, { 
-            recordTypeId : '$accountMetadata.data.defaultRecordTypeId', 
+            recordTypeId : '$accountMetadata.data.defaultRecordTypeId',
             objectApiName : CASE_OBJECT
         }) 
         wiredRecordTypeInfo({data, error}) {
@@ -35,4 +39,28 @@ export default class CasesUI extends LightningElement {
                 console.log('Error Occurred : ', error);
             }
     }
+
+    handleChange(event) {
+
+        console.log('Name: ', event.field)
+
+        // if (event.field.name == 'subject') {
+        //     this.subject = event.field.value
+        // }
+        // if (event.field.name == 'description') {
+        //     this.description = event.field.value
+        // }
+        // if (event.field.name == 'CaseStatus') {
+        //     this.statusValue = event.field.value
+        // }
+        // if (event.field.name == 'CaseOrigin') {
+        //     this.originValue = event.field.value
+        // }
+        // if (event.field.name == 'CasePriority') {
+        //     this.priorityValue = event.field.value
+        // }
+
+        // this.retrievedData = this.subject + '\n' + this.description + '\n' + this.statusValue + this.priorityValue + this.originValueset
+    }
+
 }
