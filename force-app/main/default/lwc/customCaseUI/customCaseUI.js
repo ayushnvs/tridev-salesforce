@@ -1,7 +1,7 @@
 import { LightningElement, api } from 'lwc';
 import { loadStyle, loadScript } from 'lightning/platformResourceLoader';
-import { ShowToastEvent } from 'lightning/platformShowToastEvent';
-import bootstrap from '@salesforce/resourceUrl/bootstrap';
+// import { ShowToastEvent } from 'lightning/platformShowToastEvent';
+// import bootstrap from '@salesforce/resourceUrl/bootstrap';
 
 export default class CustomCaseUI extends LightningElement {
     @api recordId
