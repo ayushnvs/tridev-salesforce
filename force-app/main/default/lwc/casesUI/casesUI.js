@@ -58,4 +58,24 @@ export default class CasesUI extends LightningElement {
         }
     }
 
+    handleCreate() {
+        fields = {
+            'Case.subject': this.subject,
+            'Case.description': this.description,
+            'Case.status': this.statusValue,
+            'Case.origin': this.originValue,
+            'Case.priority': this.priorityValue
+        }
+
+        const recordInput = {
+            apiName: CASE_OBJECT.objectApiName,
+            fields: fields
+        }
+
+
+        createRecord(recordInput).then((record) => {
+            console.log(record);
+          });
+    }
+
 }
