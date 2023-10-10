@@ -41,26 +41,21 @@ export default class CasesUI extends LightningElement {
     }
 
     handleChange(event) {
-
-        console.log('Name: ', event.field)
-
-        // if (event.field.name == 'subject') {
-        //     this.subject = event.field.value
-        // }
-        // if (event.field.name == 'description') {
-        //     this.description = event.field.value
-        // }
-        // if (event.field.name == 'CaseStatus') {
-        //     this.statusValue = event.field.value
-        // }
-        // if (event.field.name == 'CaseOrigin') {
-        //     this.originValue = event.field.value
-        // }
-        // if (event.field.name == 'CasePriority') {
-        //     this.priorityValue = event.field.value
-        // }
-
-        // this.retrievedData = this.subject + '\n' + this.description + '\n' + this.statusValue + this.priorityValue + this.originValueset
+        if (event.target.name == 'subject') {
+            this.subject = event.target.value
+        }
+        if (event.target.name == 'description') {
+            this.description = event.target.value
+        }
+        if (event.target.name == 'CaseStatus') {
+            this.statusValue = event.target.value
+        }
+        if (event.target.name == 'CaseOrigin') {
+            this.originValue = event.target.value
+        }
+        if (event.target.name == 'CasePriority') {
+            this.priorityValue = event.target.value
+        }
     }
 
 }
