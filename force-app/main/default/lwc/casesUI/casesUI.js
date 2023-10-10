@@ -4,8 +4,6 @@ import CASE_OBJECT from "@salesforce/schema/Case";
 
 export default class CasesUI extends LightningElement {
 
-    retrievedData;
-
     subject;
     description;
     statusValue;
@@ -59,23 +57,24 @@ export default class CasesUI extends LightningElement {
     }
 
     handleCreate() {
-        fields = {
-            'Case.subject': this.subject,
-            'Case.description': this.description,
-            'Case.status': this.statusValue,
-            'Case.origin': this.originValue,
-            'Case.priority': this.priorityValue
-        }
+        console.log('Updating Salesforce Database!!')
+        // fields = {
+        //     'Case.subject': this.subject,
+        //     'Case.description': this.description,
+        //     'Case.status': this.statusValue,
+        //     'Case.origin': this.originValue,
+        //     'Case.priority': this.priorityValue
+        // }
 
-        const recordInput = {
-            apiName: CASE_OBJECT.objectApiName,
-            fields: fields
-        }
+        // const recordInput = {
+        //     apiName: CASE_OBJECT.objectApiName,
+        //     fields: fields
+        // }
 
-
-        createRecord(recordInput).then((record) => {
-            console.log(record);
-          });
+        console.log('Updating Salesforce Database!!')
+        // createRecord(recordInput).then((record) => {
+        //     console.log(record);
+        //   });
     }
 
 }
