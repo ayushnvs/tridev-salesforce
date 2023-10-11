@@ -1,7 +1,7 @@
 import { LightningElement, api, wire } from 'lwc';
 import { getObjectInfo, getPicklistValuesByRecordType, createRecord } from 'lightning/uiObjectInfoApi';
 import CASE_OBJECT from "@salesforce/schema/Case";
-import doPost from '@salesforce/apex/GetCasesClass.createCase';
+import createCase from '@salesforce/apex/GetCasesClass.createCase';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 
 export default class CasesUI extends LightningElement {
@@ -65,7 +65,8 @@ export default class CasesUI extends LightningElement {
             'description': this.description,
             'status': this.statusValue,
             'origin': this.originValue,
-            'priority': this.priorityValue
+            'priority': this.priorityValue,
+            'contact_Id': ''
         }
 
         const recordInput = {
