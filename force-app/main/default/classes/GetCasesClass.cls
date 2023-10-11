@@ -24,4 +24,13 @@ public with sharing class GetCasesClass {
             throw new AuraHandledException(e.getMessage());
         }
     }
+    @AuraEnabled(cacheable=true)
+    public static Case createCase(Case caseObj){
+        try {
+            insert caseObj;
+            return caseObj;
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
+    }
 }
