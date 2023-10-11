@@ -25,10 +25,24 @@ public with sharing class GetCasesClass {
         }
     }
     @AuraEnabled(cacheable=true)
-    public static Case createCase(Case caseObj){
+    public static Case createCase(string caseSubject, string caseDescription, string caseStatus, string caseOrigin, string caseType, string casePriority){
         try {
-            insert caseObj;
-            return caseObj;
+            Case caseRec = new Case(contactId='0035j00001ACAcTAAX',
+                                    accountId='0015j000019tpLoAAI',
+                                    status=caseStatus,
+                                    type=caseType,
+                                    subject=caseSubject,
+                                    description=caseDescription,
+                                    origin=caseOrigin,
+                                    priority=casePriority);
+            // caseRec.subject = caseSubject;
+            // caseRec.status = caseStatus;
+            // caseRec.origin = caseOrigin;
+            // caseRec.type = caseType;
+            // caseRec.priority = casePriority;
+
+            insert caseRec;
+            return caseRec;
         } catch (Exception e) {
             throw new AuraHandledException(e.getMessage());
         }

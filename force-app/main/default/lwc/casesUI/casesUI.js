@@ -10,6 +10,7 @@ export default class CasesUI extends LightningElement {
     description;
     statusValue;
     originValue;
+    typeValue;
     priorityValue;
 
     pickValStatus;
@@ -34,6 +35,7 @@ export default class CasesUI extends LightningElement {
             this.pickValStatus = data.picklistFieldValues.Status.values;
             this.pickValOrigin = data.picklistFieldValues.Origin.values;
             this.pickValPriority = data.picklistFieldValues.Priority.values;
+            this.pickValType = data.picklistFieldValues.Type.values;
         }
         if (error) {
             console.log('Error Occurred : ', error);
@@ -53,28 +55,45 @@ export default class CasesUI extends LightningElement {
         if (event.target.name == 'CaseOrigin') {
             this.originValue = event.target.value
         }
+        if (event.target.name == 'CaseType') {
+            this.typeValue = event.target.value
+        }
         if (event.target.name == 'CasePriority') {
             this.priorityValue = event.target.value
         }
     }
 
     handleCreate() {
-        console.log('Updating Salesforce Database!!')
-        fields = {
-            'subject': this.subject,
-            'description': this.description,
-            'status': this.statusValue,
-            'origin': this.originValue,
-            'priority': this.priorityValue,
-            'contact_Id': ''
-        }
 
-        const recordInput = {
-            apiName: CASE_OBJECT.objectApiName,
-            fields: fields
-        }
+        createCase({caseSubject: this.subject, caseStatus: this.statusValue, caseOrigin: this.originValue, caseType: this.typeValue, casePriority: this.priorityValue}).then(record => {
+            console.log('Record Created', record)
+            // const toastEvent = new ShowToastEvent({
+            //     title:'Success!',
+            //     message:'Account created successfully',
+            //     variant:'success'
+            // });
+            // this.dispatchEvent(toastEvent);
+        }).catch(err => {
+            console.log(error);
+        })
 
-        console.log('Updating Salesforce Database!!')
+
+        // console.log('Updating Salesforce Database!!')
+        // fields = {
+        //     'subject': this.subject,
+        //     'description': this.description,
+        //     'status': this.statusValue,
+        //     'origin': this.originValue,
+        //     'priority': this.priorityValue,
+        //     'contact_Id': ''
+        // }
+
+        // const recordInput = {
+        //     apiName: CASE_OBJECT.objectApiName,
+        //     fields: fields
+        // }
+
+        // console.log('Updating Salesforce - Database!!')
         // createRecord(recordInput).then((record) => {
         //     console.log(record.Id);
             // const toastEvent = new ShowToastEvent({
@@ -85,17 +104,6 @@ export default class CasesUI extends LightningElement {
             // this.dispatchEvent(toastEvent);
         // });
 
-        createCase(fields).then(record => {
-            console.log('Record Created', record.Id)
-            const toastEvent = new ShowToastEvent({
-                title:'Success!',
-                message:'Account created successfully',
-                variant:'success'
-            });
-            this.dispatchEvent(toastEvent);
-        }).catch(err => {
-            console.log(error);
-        })
     }
 
 }

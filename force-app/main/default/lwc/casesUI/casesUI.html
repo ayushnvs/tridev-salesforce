@@ -1,10 +1,10 @@
 <template>
     <lightning-card  variant="Narrow"  title="New Case" icon-name="standard:case">
-        <div> =>> Case Subject: {subject}</div>
-        <div>=>> Case Description: {description}</div>
-        <div>=>> Case Status: {statusValue}</div>
-        <div>=>> Case Origin: {originValue}</div>
-        <div>=>> Case Priority: {priorityValue}</div>
+        <div> >>=>> Case Subject: {subject}</div>
+        <div> =>> Case Description: {description}</div>
+        <div> =>> Case Status: {statusValue}</div>
+        <div> =>> Case Origin: {originValue}</div>
+        <div> =>> Case Priority: {priorityValue}</div>
         <div class ="slds-m-around_small">
             <lightning-input name="subject" 
                              value={subject} 
@@ -29,6 +29,13 @@
                         value={originValue}
                         placeholder="Select Origin"
                         options={pickValOrigin}
+                        onchange={handleChange}
+            ></lightning-combobox>
+            <lightning-combobox name="CaseType"
+                        label="Case Type"
+                        value={typeValue}
+                        placeholder="Select Type"
+                        options={pickValType}
                         onchange={handleChange}
             ></lightning-combobox>
             <lightning-combobox name="CasePriority"
